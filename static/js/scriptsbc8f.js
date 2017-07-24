@@ -26,6 +26,17 @@ $(document).ready(function(){
     return false;
   });
 });
+//FAQ
+ function handleTabsFAQ() {
+        if($('#tabs-faq').length){
+            var tabs = $('#tabs-faq');
+            tabs.find('a').on('click', function () {
+                tabs.find('.fa-angle-right').removeClass('fa-angle-right').addClass('fa-plus');
+                $(this).find('.fa').removeClass('fa-plus').addClass('fa-angle-right');
+            });
+        }
+    }
+handleTabsFAQ();
 // Tracking
 $(document).ready(function(){
 
@@ -43,7 +54,7 @@ $(document).ready(function(){
 // Google Maps
 function initialize_map() {
 
-  var place = new google.maps.LatLng(-34.585595, -58.393225);
+  var place = new google.maps.LatLng(28.7500749, 77.1154765);
 
   var map = new google.maps.Map(document.getElementById("map-holder"), {
     center: place,
@@ -60,8 +71,8 @@ function initialize_map() {
   var marker = new google.maps.Marker({
     position: place,
     icon: {
-      url: "static/styles/images/sprite.png", 
-      size: new google.maps.Size(53, 58), 
+      url: "static/styles/images/sprite.png",
+      size: new google.maps.Size(53, 58),
       anchor: new google.maps.Point(27, 58),
       origin: new google.maps.Point(230, 0),
       scaledSize: new google.maps.Size(500, 250)
@@ -83,7 +94,8 @@ function loadGoogleMaps() {
   var script = document.createElement('script');
   script.type = 'text/javascript';
   script.async = 1;
-  script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&amp;callback=initialize_map';
+ // script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&amp;callback=initialize_map';
+   script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ_tp3RHkF_D4MejT9W_nJtbJePh_8nGs&callback=initialize_map';
   document.body.appendChild(script);
 }
 
@@ -149,7 +161,7 @@ $(function() {
 		setTimeout(function () {
 			$('.illustration .button-obelisk').removeClass('down');
 			$('.obelisk-group').removeClass('launch');
-			var obelisk     = $('.obelisk-group'),  
+			var obelisk     = $('.obelisk-group'),
 				newobelisk 	= obelisk.clone(true);
 			obelisk.before(newobelisk);
 			$('.obelisk-group:last').remove();
@@ -159,7 +171,7 @@ $(function() {
 });
 // End Obelisk
 
-// Flower 
+// Flower
 function percentClose (date) {
 	var hours = date.getHours();
 	var min = date.getMinutes();
@@ -274,7 +286,7 @@ $(document).ready(function(){
       percentUsed = Math.min(percentUsed, 1.0);
       percent = minProgressBarPercent + percentUsed * (1-minProgressBarPercent);
     }
-      
+
     $('.tickets-progress .progressbar').css('width', (percent*100.0)+'%');
 
     if( data.totalRegularTickets === 0 && data.availableRegularTickets === 0 ) {
